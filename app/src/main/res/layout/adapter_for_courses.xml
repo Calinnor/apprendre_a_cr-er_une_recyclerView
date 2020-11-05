@@ -12,14 +12,14 @@
         android:id="@+id/ingredient_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nom de l'ingrédient"
+        android:text="@string/nom_ingredient"
         android:textSize="28sp"/>
 
     <TextView
         android:id="@+id/ingredient_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantité de l'ingrédient"
+        android:text="@string/qt_ingredient"
         android:textSize="18sp"/>
-<!--    now need to create the adapter. step 11 recyclerview: create a java class IngredientsAdapter-->
+    <!--    now need to create the adapter. step 11 recyclerview: create a java class IngredientsAdapter-->
 </LinearLayout>

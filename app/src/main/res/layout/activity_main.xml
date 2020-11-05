@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--**recyclerView step 3 add recyclerview**-->
-<!--    step 4 recyclerview...add an explicite id-->
-<!--    step 5 recyclerview choose scrolling direction-->
+    <!--**recyclerView step 3 add recyclerview**-->
+    <!--    step 4 recyclerview...add an explicite id-->
+    <!--    step 5 recyclerview choose scrolling direction-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_for_ingredients"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
-<!--    step 6 recyclerview: go to main for initialise recyclerview-->
-</RelativeLayout>
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/adapter_for_courses" />
+    <!--    step 6 recyclerview: go to main for initialise recyclerview-->
+</androidx.constraintlayout.widget.ConstraintLayout>
