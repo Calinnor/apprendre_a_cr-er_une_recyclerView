@@ -1,6 +1,7 @@
 package com.cirederf.rcv;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         //at this point may add an adapter doing link between recyclerview and data to be display
         //go to step 10 recyclerview: create a layout with only one line: adapter_for_courses
 
-        //step 31 recyclerview: initialise adapter
+        //step 31 recyclerview: initialise adapter and add divider between every items
         ingredientsAdapter = new IngredientsAdapter(createListeDeCourses());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewForCourses.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerViewForCourses.addItemDecoration(dividerItemDecoration);
         recyclerViewForCourses.setAdapter(ingredientsAdapter);
     }
 

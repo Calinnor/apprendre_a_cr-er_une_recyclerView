@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RcV</string>
+    <string name="nom_ingredient">Nom de l\'ingrédient</string>
+    <string name="qt_ingredient">Quantité de l\'ingrédient</string>
 </resources>
