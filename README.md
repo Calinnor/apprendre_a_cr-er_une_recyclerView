@@ -23,3 +23,5 @@ Insertion d'une simple recyclerView comportant deux champs: une String et un int
 ### Destiné à un but pédagogique
 Il s'agit là d'une introduction à la recyclerView afin de comprendre son implémentation.
 Dans la mesure du possible le pas à pas indique les différentes étapes à suivre ainsi que des explications sommaires sur ces étapes.
+
+###Specials thanks
