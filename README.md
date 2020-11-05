@@ -25,3 +25,4 @@ Il s'agit là d'une introduction à la recyclerView afin de comprendre son impl�
 Dans la mesure du possible le pas à pas indique les différentes étapes à suivre ainsi que des explications sommaires sur ces étapes.
 
 ###Specials thanks
+@Maxvyr
