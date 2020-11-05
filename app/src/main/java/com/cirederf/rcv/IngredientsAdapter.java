@@ -56,9 +56,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         //step 24 recyclerview: create the view to be passed
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_for_courses, parent, false);
         //step 25 recyclerview : may now create an instance of the viewholder with the view created just before in argument
-        IngredientsViewHolder ingredientsViewHolder = new IngredientsViewHolder(view);
         //step 26 recyclerview: may now return this viewholder
-        return ingredientsViewHolder;
+        return new IngredientsViewHolder(view);
     }
 
     //step 27 recyclerview : may now make the link between datas in the list and the viewholder

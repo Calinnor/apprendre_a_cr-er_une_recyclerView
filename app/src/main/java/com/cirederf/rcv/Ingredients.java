@@ -7,8 +7,8 @@ step3 recyclerview go in xml (here is main)
  */
 public  class Ingredients {
 
-    private String name;
-    private int quantity;
+    private final String name;
+    private final int quantity;
 
     public Ingredients(String name, int quantity) {
         this.name = name;

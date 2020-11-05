@@ -20,14 +20,6 @@ public class MainActivity extends AppCompatActivity {
     //step 6 recyclerview declare recyclerview
     private RecyclerView recyclerViewForCourses;
 
-    //step 7 recyclerview declare layoutmanager
-    //go to step 8 in oncreate: initialise 6/7
-    private RecyclerView.LayoutManager coursesLayoutManager;
-
-    //step 30 recyclerview: instancied the adapter
-    private IngredientsAdapter ingredientsAdapter;
-    //now in create: for initialise it (step31)
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
         //at this point may add an adapter doing link between recyclerview and data to be display
         //go to step 10 recyclerview: create a layout with only one line: adapter_for_courses
 
+
+        //step 30 recyclerview: declare as a local variable the adapter and instancy it
+        IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(createListeDeCourses());
         //step 31 recyclerview: initialise adapter and add divider between every items
-        ingredientsAdapter = new IngredientsAdapter(createListeDeCourses());
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewForCourses.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerViewForCourses.addItemDecoration(dividerItemDecoration);
@@ -50,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     //step 8 recyclerview initialising recyclerview and layoutmanager
     private void configureRecyclerViewForCourses (){
         recyclerViewForCourses = findViewById(R.id.recyclerView_for_ingredients);
-        coursesLayoutManager = new LinearLayoutManager(this);
+        //step 7 recyclerview: declare layoutmanager and initialise it as a local variable
+        RecyclerView.LayoutManager coursesLayoutManager = new LinearLayoutManager(this);
         recyclerViewForCourses.setLayoutManager(coursesLayoutManager);
         //go to step 9 recyclerview: call method in main
     }
