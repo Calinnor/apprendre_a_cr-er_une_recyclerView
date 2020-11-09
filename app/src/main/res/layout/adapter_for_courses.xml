@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--step 10 recyclerview: this layout represent one line in the recyclerview-->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center">
-
 
     <TextView
         android:id="@+id/ingredient_name"
@@ -21,5 +20,5 @@
         android:layout_height="wrap_content"
         android:text="@string/qt_ingredient"
         android:textSize="18sp"/>
-    <!--    now need to create the adapter. step 11 recyclerview: create a java class IngredientsAdapter-->
+
 </LinearLayout>

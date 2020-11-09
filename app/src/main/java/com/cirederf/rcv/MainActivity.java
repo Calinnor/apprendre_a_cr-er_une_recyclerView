@@ -6,48 +6,43 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-First step recyclerView for RcV exercice: create an object class here ingredients
-step 2 in ingredients class
-Ne pas oublier la dépendance
+/**
+ * First step in this new advance: adding a button for adding new item
+ * Go in the xml containing the recyclerView
  */
 public class MainActivity extends AppCompatActivity {
 
-    //step 6 recyclerview declare recyclerview
     private RecyclerView recyclerViewForCourses;
+    //step2: once xml create, declare the  button
+    private FloatingActionButton openAddAnItemInListeDeCoursesDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //step 9 recyclerview method configuration's call
+//        openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
+        clickOnOpenAddAnItemInListeDeCoursesDialogButton();
         configureRecyclerViewForCourses();
-        //at this point may add an adapter doing link between recyclerview and data to be display
-        //go to step 10 recyclerview: create a layout with only one line: adapter_for_courses
 
-
-        //step 30 recyclerview: declare as a local variable the adapter and instancy it
         IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(createListeDeCourses());
-        //step 31 recyclerview: initialise adapter and add divider between every items
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewForCourses.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerViewForCourses.addItemDecoration(dividerItemDecoration);
         recyclerViewForCourses.setAdapter(ingredientsAdapter);
     }
 
-
-    //step 8 recyclerview initialising recyclerview and layoutmanager
     private void configureRecyclerViewForCourses (){
         recyclerViewForCourses = findViewById(R.id.recyclerView_for_ingredients);
-        //step 7 recyclerview: declare layoutmanager and initialise it as a local variable
         RecyclerView.LayoutManager coursesLayoutManager = new LinearLayoutManager(this);
         recyclerViewForCourses.setLayoutManager(coursesLayoutManager);
-        //go to step 9 recyclerview: call method in main
     }
 
     private List<Ingredients> createListeDeCourses() {
@@ -63,4 +58,14 @@ public class MainActivity extends AppCompatActivity {
         listCourses.add(new Ingredients("noix de coco", 1));
         return listCourses;
     }
+
+    public void clickOnOpenAddAnItemInListeDeCoursesDialogButton(){
+        openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
+        openAddAnItemInListeDeCoursesDialog.setOnClickListener(v-> {
+            AddAnItemDialog addAnItemDialog = new AddAnItemDialog();
+            addAnItemDialog.show(getSupportFragmentManager(), "test");
+        });
+    }
+
+
 }
