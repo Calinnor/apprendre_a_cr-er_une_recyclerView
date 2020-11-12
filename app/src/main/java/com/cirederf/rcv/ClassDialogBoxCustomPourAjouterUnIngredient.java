@@ -12,16 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 // step 5: extend class with dialogFragment
-public class AddAnItemInTheListDeCoursesDialogBox extends DialogFragment {
+public class ClassDialogBoxCustomPourAjouterUnIngredient extends DialogFragment {
 
-    private EditText setTheName;
-    private EditText setTheQuantity;
-    private AddAnIngredientInListeDeCourse listerner;
+    private EditText ajouteLeNom;
+    private EditText ajouteLaQuantiteEnString;
+    private AjouteUnIngredientALaListeDeCourses listerner;
 
     //step 6 :create the method onCreateDialog which will be override
     @NonNull
@@ -37,32 +35,30 @@ public class AddAnItemInTheListDeCoursesDialogBox extends DialogFragment {
                 .setNegativeButton("Annuler", (dialogInterface, i) -> {
                 //When setting the positive button, override onClick is automaticaly implemented
                 }).setPositiveButton("Enregistrer", (dialogInterface, i) -> {
-                    String setName = setTheName.getText().toString();
-                    //String setQuantity = setTheQuantity.getText().toString();
-                    int setQuantityToInt = Integer.parseInt(/*setQuantity*/setTheQuantity.getText().toString());
-                    listerner.applyIngredient(setName, setQuantityToInt);
+                    String ajouteNom = ajouteLeNom.getText().toString();
+                    int quantiteEnInt = Integer.parseInt(ajouteLaQuantiteEnString.getText().toString());
+                    listerner.ajouteUnIngredientALaListeDeCourses(ajouteNom, quantiteEnInt);
                 });
-        setTheName = view.findViewById(R.id.editName);
-        setTheQuantity = view.findViewById(R.id.editQuantity);
+        ajouteLeNom = view.findViewById(R.id.entrer_un_nom_pour_ingredient);
+        ajouteLaQuantiteEnString = view.findViewById(R.id.entrer_une_quantite_pour_ingredient);
         //step 9 :declare and implement values for set name and quantities
         return builder.create();
         //step 10 : the dialogBox is ready to use. Go in main in the method which will call it when we click on the button
     }
-
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
         try {
-            listerner = (AddAnIngredientInListeDeCourse) context;
+            listerner = (AjouteUnIngredientALaListeDeCourses) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + "AddAnIngredientInListeDeCourse doit etre implementée");
+            throw new ClassCastException(context.toString() + "AjouteUnIngredientALaListeDeCourses doit etre implementée");
         }
     }
 
-    public interface AddAnIngredientInListeDeCourse{
-        void applyIngredient(String setName, int setQuantityToInt);
+    public interface AjouteUnIngredientALaListeDeCourses {
+        void ajouteUnIngredientALaListeDeCourses(String ajouteLeNom, int quantiteEnInt);
     }
 
 

@@ -18,58 +18,58 @@ import java.util.List;
  */
 //step2: once xml create, declare the  button and give it a value in the method which listen the click
 
-public class MainActivity extends AppCompatActivity implements AddAnItemInTheListDeCoursesDialogBox.AddAnIngredientInListeDeCourse{
+public class MainActivity extends AppCompatActivity implements ClassDialogBoxCustomPourAjouterUnIngredient.AjouteUnIngredientALaListeDeCourses {
 
-    private RecyclerView recyclerViewForCourses;
-    public List<Ingredients> listeDeCourses = new ArrayList<>();
+    private RecyclerView recyclerViewPourLaListeDeCourses;
+    public List<Ingredients> laListeDeCoursesAAfficher = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        clickOnOpenAddAnItemInListeDeCoursesDialogButton();
+        clickSurLeBoutonQuiOuvreLaBoiteDeDialogue();
         configureRecyclerViewForCourses();
 
-        IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(createListeDeCourses());
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewForCourses.getContext(),
+        IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(creationDeLaListeDeCourses());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewPourLaListeDeCourses.getContext(),
                 LinearLayoutManager.VERTICAL);
-        recyclerViewForCourses.addItemDecoration(dividerItemDecoration);
-        recyclerViewForCourses.setAdapter(ingredientsAdapter);
+        recyclerViewPourLaListeDeCourses.addItemDecoration(dividerItemDecoration);
+        recyclerViewPourLaListeDeCourses.setAdapter(ingredientsAdapter);
     }
 
     private void configureRecyclerViewForCourses (){
-        recyclerViewForCourses = findViewById(R.id.recyclerView_for_ingredients);
+        recyclerViewPourLaListeDeCourses = findViewById(R.id.recyclerView_pour_la_liste_ingredients);
         RecyclerView.LayoutManager coursesLayoutManager = new LinearLayoutManager(this);
-        recyclerViewForCourses.setLayoutManager(coursesLayoutManager);
+        recyclerViewPourLaListeDeCourses.setLayoutManager(coursesLayoutManager);
     }
 
-    public List<Ingredients> createListeDeCourses() {
-        listeDeCourses.add(new Ingredients("oranges", 4));
-        listeDeCourses.add(new Ingredients("poires", 4));
-        listeDeCourses.add(new Ingredients("pommes", 2));
-        listeDeCourses.add(new Ingredients("paquets de chips", 12));
-        listeDeCourses.add(new Ingredients("pots de confiture", 4));
-        listeDeCourses.add(new Ingredients("lettres", 14));
-        listeDeCourses.add(new Ingredients("pizzas", 5));
-        listeDeCourses.add(new Ingredients("bananes", 55));
-        listeDeCourses.add(new Ingredients("noix de coco", 1));
-        return listeDeCourses;
+    public List<Ingredients> creationDeLaListeDeCourses() {
+        laListeDeCoursesAAfficher.add(new Ingredients("oranges", 4));
+        laListeDeCoursesAAfficher.add(new Ingredients("poires", 4));
+        laListeDeCoursesAAfficher.add(new Ingredients("pommes", 2));
+        laListeDeCoursesAAfficher.add(new Ingredients("paquets de chips", 12));
+        laListeDeCoursesAAfficher.add(new Ingredients("pots de confiture", 4));
+        laListeDeCoursesAAfficher.add(new Ingredients("lettres", 14));
+        laListeDeCoursesAAfficher.add(new Ingredients("pizzas", 5));
+        laListeDeCoursesAAfficher.add(new Ingredients("bananes", 55));
+        laListeDeCoursesAAfficher.add(new Ingredients("noix de coco", 1));
+        return laListeDeCoursesAAfficher;
     }
 
-    public void clickOnOpenAddAnItemInListeDeCoursesDialogButton(){
-        FloatingActionButton openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
-        openAddAnItemInListeDeCoursesDialog.setOnClickListener(v-> {
+    public void clickSurLeBoutonQuiOuvreLaBoiteDeDialogue(){
+        FloatingActionButton boutonQuiOuvreLaBoiteDeDialogue = findViewById(R.id.boutonQuiOuvreLaBoiteDeDialogue);
+        boutonQuiOuvreLaBoiteDeDialogue.setOnClickListener(v-> {
             //step 3: create the xml for the dialog box (add_an_item_dialog)
             //step 11 : declare and initialise the dialogBox
-            AddAnItemInTheListDeCoursesDialogBox addAnItemInTheListDeCoursesDialogBox = new AddAnItemInTheListDeCoursesDialogBox();
-            addAnItemInTheListDeCoursesDialogBox.show(getSupportFragmentManager(), "dialogbox");
+            ClassDialogBoxCustomPourAjouterUnIngredient classDialogBoxCustomPourAjouterUnIngredient = new ClassDialogBoxCustomPourAjouterUnIngredient();
+            classDialogBoxCustomPourAjouterUnIngredient.show(getSupportFragmentManager(), "dialogbox");
         });
     }
 
     @Override
-    public void applyIngredient(String setName, int setQuantityToInt) {
-        Ingredients ingredients = new Ingredients(setName, setQuantityToInt);
-        listeDeCourses.add(ingredients);
+    public void ajouteUnIngredientALaListeDeCourses(String ajouteLeNom, int quantiteEnInt) {
+        Ingredients ingredients = new Ingredients(ajouteLeNom, quantiteEnInt);
+        laListeDeCoursesAAfficher.add(ingredients);
     }
 }

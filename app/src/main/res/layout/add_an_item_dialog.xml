@@ -7,7 +7,7 @@
 <!--step 4: once created, create the java class linked with the xml-->
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/entrer_un_nom_pour_ingredient"
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,11 +17,11 @@
 
     <EditText
         android:padding="16dp"
-        android:id="@+id/editQuantity"
+        android:id="@+id/entrer_une_quantite_pour_ingredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editName"
+        app:layout_constraintTop_toBottomOf="@+id/entrer_un_nom_pour_ingredient"
         android:text="Entrez la quantité"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
