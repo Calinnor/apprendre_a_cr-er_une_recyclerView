@@ -1,12 +1,11 @@
 package com.cirederf.rcv;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -17,18 +16,18 @@ import java.util.List;
  * First step in this new advance: adding a button for adding new item
  * Go in the xml containing the recyclerView
  */
-public class MainActivity extends AppCompatActivity {
+//step2: once xml create, declare the  button and give it a value in the method which listen the click
+
+public class MainActivity extends AppCompatActivity implements AddAnItemInTheListDeCoursesDialogBox.AddAnIngredientInListeDeCourse{
 
     private RecyclerView recyclerViewForCourses;
-    //step2: once xml create, declare the  button
-    private FloatingActionButton openAddAnItemInListeDeCoursesDialog;
+    public List<Ingredients> listeDeCourses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
         clickOnOpenAddAnItemInListeDeCoursesDialogButton();
         configureRecyclerViewForCourses();
 
@@ -45,27 +44,32 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewForCourses.setLayoutManager(coursesLayoutManager);
     }
 
-    private List<Ingredients> createListeDeCourses() {
-        List<Ingredients> listCourses = new ArrayList<>();
-        listCourses.add(new Ingredients("oranges", 4));
-        listCourses.add(new Ingredients("poires", 4));
-        listCourses.add(new Ingredients("pommes", 2));
-        listCourses.add(new Ingredients("paquets de chips", 12));
-        listCourses.add(new Ingredients("pots de confiture", 4));
-        listCourses.add(new Ingredients("lettres", 14));
-        listCourses.add(new Ingredients("pizzas", 5));
-        listCourses.add(new Ingredients("bananes", 55));
-        listCourses.add(new Ingredients("noix de coco", 1));
-        return listCourses;
+    public List<Ingredients> createListeDeCourses() {
+        listeDeCourses.add(new Ingredients("oranges", 4));
+        listeDeCourses.add(new Ingredients("poires", 4));
+        listeDeCourses.add(new Ingredients("pommes", 2));
+        listeDeCourses.add(new Ingredients("paquets de chips", 12));
+        listeDeCourses.add(new Ingredients("pots de confiture", 4));
+        listeDeCourses.add(new Ingredients("lettres", 14));
+        listeDeCourses.add(new Ingredients("pizzas", 5));
+        listeDeCourses.add(new Ingredients("bananes", 55));
+        listeDeCourses.add(new Ingredients("noix de coco", 1));
+        return listeDeCourses;
     }
 
     public void clickOnOpenAddAnItemInListeDeCoursesDialogButton(){
-        openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
+        FloatingActionButton openAddAnItemInListeDeCoursesDialog = findViewById(R.id.openAddAnItemInListeDeCoursesDialog);
         openAddAnItemInListeDeCoursesDialog.setOnClickListener(v-> {
-            AddAnItemDialog addAnItemDialog = new AddAnItemDialog();
-            addAnItemDialog.show(getSupportFragmentManager(), "test");
+            //step 3: create the xml for the dialog box (add_an_item_dialog)
+            //step 11 : declare and initialise the dialogBox
+            AddAnItemInTheListDeCoursesDialogBox addAnItemInTheListDeCoursesDialogBox = new AddAnItemInTheListDeCoursesDialogBox();
+            addAnItemInTheListDeCoursesDialogBox.show(getSupportFragmentManager(), "dialogbox");
         });
     }
 
-
+    @Override
+    public void applyIngredient(String setName, int setQuantityToInt) {
+        Ingredients ingredients = new Ingredients(setName, setQuantityToInt);
+        listeDeCourses.add(ingredients);
+    }
 }
